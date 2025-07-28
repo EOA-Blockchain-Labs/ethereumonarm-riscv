@@ -1,0 +1,16 @@
+[Unit]
+  Description=Optimism op-geth Service
+  StartLimitIntervalSec=500
+  StartLimitBurst=5
+
+[Service]
+  EnvironmentFile=/etc/ethereum/op-geth-base.conf
+  Restart=on-failure
+  RestartSec=5s
+  ExecStart=/usr/bin/op-geth $ARGS
+  Type=simple
+  User=ethereum
+  TimeoutSec=0
+
+[Install]
+  WantedBy=multi-user.target
